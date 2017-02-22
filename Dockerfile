@@ -19,9 +19,8 @@ RUN apt-get update && \
     wget -q -O piafs.zip https://github.com/linuq/PIAFS/archive/master.zip && \
     unzip piafs.zip && \
     mv PIAFS-master/src/* /var/www/html && \
-    chown -R www-data:www-data /var/www/html && \
-    rm -r piafs* && \
-	chmod +x /apache.sh && \
+    chmod -R 777 /var/www/html && \
+    chmod +x /apache.sh && \
     rm /var/www/html/index.html
 
 VOLUME ["/var/www/html/galleries", "/var/www/html/themes", "/var/www/html/plugins", "/var/www/html/local"]
