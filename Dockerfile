@@ -16,11 +16,12 @@ RUN apt-get update && \
     apt-get install -y php7.0-mysql php7.0-gd imagemagick wget unzip mediainfo ffmpeg && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    wget -q -O piafs.zip https://github.com/linuq/PIAFS/archive/master.zip && \
-    unzip piafs.zip && \
-    mv PIAFS-master/src/* /var/www/html && \
-    chmod -R 777 /var/www/html && \
-    chmod +x /apache.sh && \
+    wget -q -O piwigo.zip https://github.com/linuq/PIAFS/archive/master.zip && \
+    unzip piwigo.zip && \
+    mv piwigo/src/* /var/www/html && \
+    chown -R www-data:www-data /var/www/html && \
+    rm -r piwigo* && \
+	chmod +x /apache.sh && \
     rm /var/www/html/index.html
 
 VOLUME ["/var/www/html/galleries", "/var/www/html/themes", "/var/www/html/plugins", "/var/www/html/local"]
